@@ -1,9 +1,9 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
+module1-task1
 * Студент: [Евгений](https://up.htmlacademy.ru/javascript/13/user/176289).
 * Наставник: [Артемий Бойков](https://htmlacademy.ru/profile/id607755).
 
----
 
 _Не удаляйте и не обращайте внимание на файлы:_<br>
 _`.editorconfig`, `.eslintrc`, `.gitattributes`, `.gitignore`, `.travis.yml`, `package-lock.json`, `package.json`._
