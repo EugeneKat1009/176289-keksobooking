@@ -128,6 +128,7 @@ var articleRender = function (articles, index) {
 
   return advert;
 };
-  var selectedIndex = 0;
-  var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
-  articleElement.appendChild(fragmentAdvert);
+
+var selectedIndex = 0;
+var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
+articleElement.appendChild(fragmentAdvert);
