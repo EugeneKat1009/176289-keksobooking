@@ -1,5 +1,8 @@
 'use strict';
 // Переменные
+var ESC_BTN = 27;
+var ENTER_BTN = 13;
+
 var offerTitle = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
 var offerType = ['palace', 'flat', 'house', 'bungalo'];
 var offerCheckin = ['12:00', '13:00', '14:00'];
@@ -20,10 +23,6 @@ var locationMinY = 150;
 var locationMaxY = 500;
 
 var mapObjects = [];
-
-// удаление затеменения
-var mapOverlay = document.querySelector('.map');
-mapOverlay.classList.remove('map--faded');
 
 // объявление DOM-переменных
 var buttonElement = document.querySelector('.map__pins');
@@ -132,3 +131,54 @@ var articleRender = function (articles, index) {
 var selectedIndex = 0;
 var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
 articleElement.appendChild(fragmentAdvert);
+
+function removePopup() {
+  var popupClose = document.querySelector('.popup');
+  if (popupClose) {
+    popupClose.remove();
+  }
+};
+
+function createPopup () {
+  var noticeNode = articles[index];
+  fragmentAdvert = fragment.appendChild(noticeNode);
+  articleElement.appendChild(fragmentAdvert);
+}
+
+var mapPinMain = document.querySelector('.map__pin--main');
+
+var onPinClick = function () {
+  var mapOverlay = document.querySelector('.map');
+  mapOverlay.classList.remove('map--faded');
+  var adForm = document.querySelector('.ad-form');
+  adForm.classList.remove('ad-form--disabled');
+
+  var inputsActive = document.getElementsByTagName('fieldset');
+    for(var i = 0; i < inputsActive.length; i++) {
+      inputsActive[i].disabled = false;
+}
+
+  var coords = mapPinMain.getBoundingClientRect();
+  var coords1 = [coords.left, coords.top];
+  var addressCoord = document.getElementById('address');
+  addressCoord.value = coords1;
+}
+mapPinMain.addEventListener('mouseup', onPinClick);
+
+mapPinMain.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_BTN) {
+    onPinClick();
+  }
+});
+
+var popupClose = fragmentAdvert.querySelector('.popup__close');
+popupClose.addEventListener('click', function () {
+  removePopup();
+});
+
+// var allMapPinButtons = document.querySelector('.map__pins');
+// allMapPinButtons.addEventListener('click', function (evt) {
+//   var target = evt.target;
+//   if (target.tagName === 'IMG') {
+//     createPopup()};
+// });
