@@ -1,6 +1,6 @@
 'use strict';
 // Переменные
-var ESC_BTN = 27;
+// var ESC_BTN = 27;
 var ENTER_BTN = 13;
 
 var offerTitle = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
@@ -139,12 +139,6 @@ var removePopup = function () {
   }
 };
 
-var createPopup = function ()  {
-  var noticeNode = articles[index];
-  fragmentAdvert = fragment.appendChild(noticeNode);
-  articleElement.appendChild(fragmentAdvert);
-}
-
 var mapPinMain = document.querySelector('.map__pin--main');
 
 var onPinClick = function () {
@@ -154,15 +148,16 @@ var onPinClick = function () {
   adForm.classList.remove('ad-form--disabled');
 
   var inputsActive = document.getElementsByTagName('fieldset');
-    for(var i = 0; i < inputsActive.length; i++) {
-      inputsActive[i].disabled = false;
-}
+  for (i = 0; i < inputsActive.length; i++) {
+    inputsActive[i].disabled = false;
+  }
 
   var coords = mapPinMain.getBoundingClientRect();
   var coords1 = [coords.left, coords.top];
   var addressCoord = document.getElementById('address');
   addressCoord.value = coords1;
-}
+};
+
 mapPinMain.addEventListener('mouseup', onPinClick);
 
 mapPinMain.addEventListener('keydown', function (evt) {
@@ -234,15 +229,15 @@ roomNumber.addEventListener('change', function () {
     capacity.options[1].selected = true;
     capacity.options[0].disabled = true;
     capacity.options[3].disabled = true;
-} else if (roomNumber.options[2].selected === true) {
+  } else if (roomNumber.options[2].selected === true) {
     capacity.options[1].selected = true;
     capacity.options[0].selected = true;
     capacity.options[2].disabled = true;
     capacity.options[3].disabled = true;
-} else if (roomNumber.options[3].selected === true) {
+  } else if (roomNumber.options[3].selected === true) {
     capacity.options[3].selected = true;
     capacity.options[0].disabled = true;
     capacity.options[2].disabled = true;
     capacity.options[1].disabled = true;
-}
+  }
 });
