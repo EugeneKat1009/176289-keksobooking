@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-  var mapField = document.querySelector('.map');
   var mapPinMain = document.querySelector('.map__pin--main');
 
   mapPinMain.addEventListener('mousedown', function (evt) {
@@ -29,8 +28,8 @@
       var newY = mapPinMain.offsetTop - shift.y;
 
       if (newX > 0 && newX < document.querySelector('.map').offsetWidth && newY > 0 && newY < document.querySelector('.map').offsetHeight) {
-      mapPinMain.style.top = newY + 'px';
-      mapPinMain.style.left = newX + 'px';
+        mapPinMain.style.top = newY + 'px';
+        mapPinMain.style.left = newX + 'px';
       }
     };
 
