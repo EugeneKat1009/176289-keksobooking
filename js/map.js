@@ -142,7 +142,7 @@ var removePopup = function () {
 var mapPinMain = document.querySelector('.map__pin--main');
 
 var inputDisable = document.querySelectorAll('fieldset');
-for(var i = 0; i < inputDisable.length; i++) {
+for (i = 0; i < inputDisable.length; i++) {
   inputDisable[i].disabled = true;
 }
 
