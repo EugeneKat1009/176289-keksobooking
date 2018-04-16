@@ -141,6 +141,11 @@ var removePopup = function () {
 
 var mapPinMain = document.querySelector('.map__pin--main');
 
+var inputDisable = document.querySelectorAll('fieldset');
+for(var i = 0; i < inputDisable.length; i++) {
+  inputDisable[i].disabled = true;
+}
+
 var onPinClick = function () {
   var mapOverlay = document.querySelector('.map');
   mapOverlay.classList.remove('map--faded');
