@@ -154,9 +154,9 @@ var onPinClick = function () {
   adForm.classList.remove('ad-form--disabled');
 
   var inputsActive = document.getElementsByTagName('fieldset');
-    for(var i = 0; i < inputsActive.length; i++) {
-      inputsActive[i].disabled = false;
-}
+  for(var i = 0; i < inputsActive.length; i++) {
+    inputsActive[i].disabled = false;
+  }
 
   var coords = mapPinMain.getBoundingClientRect();
   var coords1 = [coords.left, coords.top];
@@ -175,10 +175,3 @@ var popupClose = fragmentAdvert.querySelector('.popup__close');
 popupClose.addEventListener('click', function () {
   removePopup();
 });
-
-// var allMapPinButtons = document.querySelector('.map__pins');
-// allMapPinButtons.addEventListener('click', function (evt) {
-//   var target = evt.target;
-//   if (target.tagName === 'IMG') {
-//     createPopup()};
-// });
