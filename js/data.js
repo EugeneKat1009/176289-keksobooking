@@ -83,12 +83,6 @@
     mapObjects.push(createMap());
   }
 
-  // кнопки
-  for (var btnIndex = 0; btnIndex < 8; btnIndex++) {
-    fragment.appendChild(renderButtonMap(mapObjects, btnIndex));
-  }
-  buttonElement.appendChild(fragment);
-
   // функция генерации объявления
   var articleRender = function (articles, index) {
 
@@ -125,8 +119,24 @@
 
     return advert;
   };
-// объявление
+  var mapPinMain = document.querySelector('.map__pin--main');
   var selectedIndex = 0;
-  var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
-  articleElement.appendChild(fragmentAdvert);
+
+  var onPinClickAdvert = function () {
+    // объявление
+
+    var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
+    articleElement.appendChild(fragmentAdvert);
+
+    // кнопки
+    for (var btnIndex = 0; btnIndex < 8; btnIndex++) {
+      fragment.appendChild(renderButtonMap(mapObjects, btnIndex));
+    }
+    buttonElement.appendChild(fragment);
+  };
+
+  mapPinMain.addEventListener('mouseup', onPinClickAdvert);
+  mapPinMain.addEventListener('keydown', function (evt) {
+    window.util.isEnterEvent(evt, onPinClickAdvert);
+  });
 })();
