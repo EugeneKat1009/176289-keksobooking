@@ -125,7 +125,7 @@
 
     return advert;
   };
-
+// объявление
   var selectedIndex = 0;
   var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
   articleElement.appendChild(fragmentAdvert);
