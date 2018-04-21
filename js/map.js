@@ -38,8 +38,8 @@
     window.util.isEnterEvent(evt, onPinClick);
   });
 
-  var popupClose = document.querySelector('.popup__close');
-  popupClose.addEventListener('click', function () {
+  var closeAdvert = document.querySelector('.popup__close');
+  closeAdvert.addEventListener('click', function () {
     removePopup();
   });
 })();
