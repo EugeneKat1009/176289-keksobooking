@@ -2,7 +2,6 @@
 
 (function () {
   var popup = document.querySelector('.popup');
-
   var removePopup = function () {
     if (popup) {
       popup.remove();
