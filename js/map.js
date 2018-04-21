@@ -1,10 +1,11 @@
 'use strict';
 
 (function () {
+  var popup = document.querySelector('.popup');
+
   var removePopup = function () {
-    var popupClose = document.querySelector('.popup');
-    if (popupClose) {
-      popupClose.remove();
+    if (popup) {
+      popup.remove();
     }
   };
 
@@ -38,7 +39,7 @@
     window.util.isEnterEvent(evt, onPinClick);
   });
 
-  var closeAdvert = document.querySelector('.popup__close');
+  var closeAdvert = popup.querySelector('.popup__close');
   closeAdvert.addEventListener('click', function () {
     removePopup();
   });
