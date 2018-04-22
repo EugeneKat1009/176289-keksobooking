@@ -68,4 +68,13 @@
       capacity.options[1].disabled = true;
     }
   });
+
+  var successMessage = document.querySelector('.success');
+  var form = document.querySelector('.ad-form');
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function () {
+      successMessage.classList.remove('hidden');
+    });
+    evt.preventDefault();
+  });
 })();
