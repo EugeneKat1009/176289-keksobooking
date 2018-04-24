@@ -1,14 +1,6 @@
 'use strict';
 
 (function () {
-  var popup = document.querySelector('.popup');
-
-  var removePopup = function () {
-    if (popup) {
-      popup.remove();
-    }
-  };
-
   var mapPinMain = document.querySelector('.map__pin--main');
 
   var inputDisable = document.querySelectorAll('fieldset');
