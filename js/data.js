@@ -68,10 +68,6 @@
     };
   };
 
-  for (var i = 0; i < 8; i++) {
-      mapObjects.push(createMap());
-  }
-
   // объекты
   var renderButtonMap = function (btn, index) {
     var button = buttonTemplate.cloneNode(true);
@@ -82,6 +78,10 @@
 
     return button;
   };
+
+  for (var i = 0; i < 8; i++) {
+    mapObjects.push(createMap());
+  }
 
   // функция генерации объявления
   var articleRender = function (articles, index) {
@@ -123,8 +123,8 @@
   var selectedIndex = 0;
 
   var onPinClickAdvert = function () {
-
     // объявление
+
     var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
     articleElement.appendChild(fragmentAdvert);
 
@@ -139,4 +139,5 @@
   mapPinMain.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, onPinClickAdvert);
   });
+
 })();

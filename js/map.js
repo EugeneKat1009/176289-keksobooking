@@ -2,6 +2,7 @@
 
 (function () {
   var popup = document.querySelector('.popup');
+
   var removePopup = function () {
     if (popup) {
       popup.remove();
@@ -36,10 +37,5 @@
 
   mapPinMain.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, onPinClick);
-  });
-
-  var closeAdvert = popup.querySelector('.popup__close');
-  closeAdvert.addEventListener('click', function () {
-    removePopup();
   });
 })();
