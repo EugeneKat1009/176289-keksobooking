@@ -27,7 +27,6 @@
   var buttonTemplate = document.querySelector('template').content.querySelector('button.map__pin');
   var articleTemplate = document.querySelector('template').content.querySelector('article');
   var articleElement = document.querySelector('section.map');
-  var fragment = document.createDocumentFragment();
 
   var getRandom = function (maxNumber) {
     var rand = Math.floor(Math.random() * maxNumber);
@@ -75,7 +74,13 @@
     button.querySelector('img').alt = btn[index].offer.title;
     button.style.left = btn[index].location.x + 'px';
     button.style.top = btn[index].location.y + 'px';
-
+    button.addEventListener('click', function () {
+      var popup = document.querySelector('.popup');
+      if (popup) {
+        popup.remove();
+      }
+      onPinClick(index);
+    });
     return button;
   };
 
@@ -84,7 +89,7 @@
   }
 
   // функция генерации объявления
-  var articleRender = function (articles, index) {
+  var popupRender = function (articles, index) {
 
     var advert = articleTemplate.cloneNode(true);
     advert.querySelector('.popup__title').textContent = articles[index].offer.title;
@@ -120,24 +125,35 @@
     return advert;
   };
   var mapPinMain = document.querySelector('.map__pin--main');
-  var selectedIndex = 0;
 
-  var onPinClickAdvert = function () {
-    // объявление
-
-    var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedIndex));
-    articleElement.appendChild(fragmentAdvert);
-
-    // кнопки
+  var onPinMainClick = function () {
+    var fragment = document.createDocumentFragment();
     for (var btnIndex = 0; btnIndex < 8; btnIndex++) {
       fragment.appendChild(renderButtonMap(mapObjects, btnIndex));
     }
     buttonElement.appendChild(fragment);
   };
 
-  mapPinMain.addEventListener('mouseup', onPinClickAdvert);
+  mapPinMain.addEventListener('mouseup', onPinMainClick);
   mapPinMain.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, onPinClickAdvert);
+    window.util.isEnterEvent(evt, onPinMainClick);
   });
 
+  var onPinClick = function (selectedIndex) {
+
+    var fragment = document.createDocumentFragment();
+    var fragmentAdvert = fragment.appendChild(popupRender(mapObjects, selectedIndex));
+    articleElement.appendChild(fragmentAdvert);
+
+    var popupClose = fragmentAdvert.querySelector('.popup__close');
+    popupClose.addEventListener('click', function () {
+      removePopup();
+    });
+    var popup = document.querySelector('.popup');
+    var removePopup = function () {
+      if (popup) {
+        popup.remove();
+      }
+    };
+  };
 })();

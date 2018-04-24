@@ -39,8 +39,5 @@
     window.util.isEnterEvent(evt, onPinClick);
   });
 
-  var popupClose = fragmentAdvert.querySelector('.popup__close');
-  popupClose.addEventListener('click', function () {
-    removePopup();
-  });
+
 })();

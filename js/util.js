@@ -15,9 +15,5 @@ window.util = (function () {
         action();
       }
     },
-    getRandom: function (array) {
-      var index = Math.floor(Math.random() * array.length);
-      return array[index];
-    },
   };
 })();
