@@ -30,6 +30,4 @@
   mapPinMain.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, onPinClick);
   });
-
-
 })();
