@@ -27,11 +27,24 @@
       var newX = mapPinMain.offsetLeft - shift.x;
       var newY = mapPinMain.offsetTop - shift.y;
 
-      if (newX > 0 && newX < document.querySelector('.map').offsetWidth && newY > 0 && newY < document.querySelector('.map').offsetHeight) {
+      if (newX >= 0 && newX <= document.querySelector('.map').offsetWidth && newY >= 10 && newY <= document.querySelector('.map').offsetHeight) {
         mapPinMain.style.top = newY + 'px';
         mapPinMain.style.left = newX + 'px';
       }
     };
+
+
+        //   var pinMainShiftedX = mapPinMain.offsetLeft - shift.x;
+        //   var pinMainShiftedY = mapPinMain.offsetTop - shift.y;
+        //   var arrowPositionX = newX;
+        //   var arrowPositionY = pinMainShiftedY;
+        //   if (arrowPositionX >= MIN_X && arrowPositionX <= MAX_X && arrowPositionY >= MIN_Y && arrowPositionY <= MAX_Y) {
+        //     mapPinMain.style.left = (pinMainShiftedX) + 'px';
+        //     mapPinMain.style.top = (pinMainShiftedY) + 'px';
+        //     var pinMainPosition = arrowPositionX + ', ' + arrowPositionY;
+        //     addressInput.value = pinMainPosition;
+        //   }
+        // };
 
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();

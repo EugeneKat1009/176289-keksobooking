@@ -1,25 +1,6 @@
 'use strict';
 
 (function () {
-  var offerTitle = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
-  var offerType = ['palace', 'flat', 'house', 'bungalo'];
-  var offerCheckin = ['12:00', '13:00', '14:00'];
-  var offerCheckout = ['12:00', '13:00', '14:00'];
-  var offerFeatures = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-  var offerPriceMin = 1000;
-  var offerPriceMax = 1000000;
-  var offerRoomsMin = 1;
-  var offerRoomsMax = 5;
-  var guestsMin = 1;
-  var guestsMax = 14;
-  var offerFeaturesMin = 0;
-  var offerFeaturesMax = offerFeatures.length;
-  var offerPhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-  var locationMinX = 300;
-  var locationMaxX = 900;
-  var locationMinY = 150;
-  var locationMaxY = 500;
-
   var mapObjects = [];
 
   // объявление DOM-переменных
@@ -39,39 +20,6 @@
     var randomNumber = Math.floor(Math.random() * (max - min)) + min;
     return randomNumber;
   };
-
-  // генерация массива
-  var createMap = function () {
-    var locationX = getRandomNumber(locationMinX, locationMaxX);
-    var locationY = getRandomNumber(locationMinY, locationMaxY);
-
-    return {
-      author: {
-        avatar: 'img/avatars/user0' + getRandomNumber(1, 8) + '.png'
-      },
-      offer: {
-        title: offerTitle[getRandom(offerTitle.length)],
-        address: locationX + ', ' + locationY,
-        price: getRandomNumber(offerPriceMin, offerPriceMax),
-        type: offerType[getRandom(offerType.length)],
-        rooms: getRandomNumber(offerRoomsMin, offerRoomsMax),
-        guests: getRandomNumber(guestsMin, guestsMax),
-        checkin: offerCheckin[getRandom(offerCheckin.length)],
-        checkout: offerCheckout[getRandom(offerCheckout.length)],
-        features: offerFeatures.slice(getRandomNumber(offerFeaturesMin, offerFeaturesMax)),
-        description: '',
-        photos: offerPhotos[getRandom(offerPhotos.length)]
-      },
-      location: {
-        x: locationX,
-        y: locationY
-      }
-    };
-  };
-
-  for (var i = 0; i < 8; i++) {
-    mapObjects.push(createMap());
-  }
 
   // объекты
   var renderButtonMap = function (pin) {
@@ -121,7 +69,7 @@
     advert.querySelector('.popup__description').textContent = pin.offer.description;
 
     advert.querySelector('.popup__photos').innerHTML = '';
-    for (i = 0; i < pin.offer.photos.length; i++) {
+    for (var i = 0; i < pin.offer.photos.length; i++) {
       var photo = photoTemplate.cloneNode(true);
       photo.src = pin.offer.photos[i];
       advert.appendChild(photo);
@@ -163,7 +111,7 @@
   var onLoad = function (pins) {
     var fragment = document.createDocumentFragment();
 
-    for (i = 0; i < pins.length; i++) {
+    for (var i = 0; i < pins.length; i++) {
       fragment.appendChild(renderButtonMap(pins[i]));
     }
     buttonElement.appendChild(fragment);
