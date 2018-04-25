@@ -1,25 +1,12 @@
 'use strict';
 
 (function () {
-  var mapObjects = [];
-
   // объявление DOM-переменных
   var buttonElement = document.querySelector('.map__pins');
   var buttonTemplate = document.querySelector('template').content.querySelector('button.map__pin');
   var articleTemplate = document.querySelector('template').content.querySelector('article');
   var articleElement = document.querySelector('section.map');
   var photoTemplate = document.querySelector('template').content.querySelector('.popup__photo');
-
-
-  var getRandom = function (maxNumber) {
-    var rand = Math.floor(Math.random() * maxNumber);
-    return rand;
-  };
-
-  var getRandomNumber = function (min, max) {
-    var randomNumber = Math.floor(Math.random() * (max - min)) + min;
-    return randomNumber;
-  };
 
   // объекты
   var renderButtonMap = function (pin) {
@@ -96,16 +83,21 @@
     var fragmentAdvert = fragment.appendChild(popupRender(pin));
     articleElement.appendChild(fragmentAdvert);
 
-    var popupClose = fragmentAdvert.querySelector('.popup__close');
-    popupClose.addEventListener('click', function () {
-      removePopup();
-    });
     var popup = document.querySelector('.popup');
     var removePopup = function () {
       if (popup) {
         popup.remove();
       }
     };
+
+    var popupClose = fragmentAdvert.querySelector('.popup__close');
+    popupClose.addEventListener('click', function () {
+      removePopup();
+    });
+
+    document.addEventListener('keydown', function (evt) {
+      window.util.isEscEvent(evt, removePopup);
+    });
   };
 
   var onLoad = function (pins) {
