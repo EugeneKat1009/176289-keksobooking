@@ -71,7 +71,7 @@
 
   var successMessage = document.querySelector('.success');
   var form = document.querySelector('.ad-form');
-  form.addEventListener('submit', function (evt) {
+  form.addEventListener('submit', function () {
     window.backend.save(new FormData(form), function () {
       successMessage.classList.remove('hidden');
     });
