@@ -75,7 +75,7 @@
     window.backend.save(new FormData(form), function () {
       successMessage.classList.remove('hidden');
     });
-    evt.preventDefault();
+    // evt.preventDefault();
   });
   var successMessageRemove = function () {
     if (successMessage) {
