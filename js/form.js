@@ -45,6 +45,13 @@
   });
 
   // синхронизация количества людей
+  if (roomNumber.options[0].selected === true) {
+    capacity.options[2].selected = true;
+    capacity.options[0].disabled = true;
+    capacity.options[1].disabled = true;
+    capacity.options[3].disabled = true;
+  }
+
   roomNumber.addEventListener('change', function () {
     if (roomNumber.options[0].selected === true) {
       capacity.options[2].selected = true;
@@ -54,15 +61,20 @@
     } else if (roomNumber.options[1].selected === true) {
       capacity.options[2].selected = true;
       capacity.options[1].selected = true;
+      capacity.options[2].disabled = false;
+      capacity.options[1].disabled = false;
       capacity.options[0].disabled = true;
       capacity.options[3].disabled = true;
     } else if (roomNumber.options[2].selected === true) {
       capacity.options[1].selected = true;
       capacity.options[0].selected = true;
+      capacity.options[1].disabled = false;
+      capacity.options[0].disabled = false;
       capacity.options[2].disabled = true;
       capacity.options[3].disabled = true;
     } else if (roomNumber.options[3].selected === true) {
       capacity.options[3].selected = true;
+      capacity.options[3].disabled = false;
       capacity.options[0].disabled = true;
       capacity.options[2].disabled = true;
       capacity.options[1].disabled = true;

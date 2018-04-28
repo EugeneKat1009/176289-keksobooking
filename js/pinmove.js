@@ -3,7 +3,7 @@
 (function () {
   var form = document.querySelector('.ad-form');
   var addressInput = form.elements.address;
-  var MAX_X = 1150;
+  var MAX_X = 1135;
   var MAX_Y = 620;
   var mapPinMain = document.querySelector('.map__pin--main');
 
