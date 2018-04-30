@@ -1,5 +1,6 @@
 'use strict';
 // Переменные
+
 var ESC_BTN = 27;
 var ENTER_BTN = 13;
 
@@ -139,6 +140,7 @@ function removePopup() {
   }
 };
 
+
 function createPopup () {
   var noticeNode = articles[index];
   fragmentAdvert = fragment.appendChild(noticeNode);
@@ -154,6 +156,7 @@ var onPinClick = function () {
   adForm.classList.remove('ad-form--disabled');
 
   var inputsActive = document.getElementsByTagName('fieldset');
+
   for(var i = 0; i < inputsActive.length; i++) {
     inputsActive[i].disabled = false;
   }
