@@ -60,20 +60,22 @@
       }
       capacity.options[3 - roomCount].selected = true;
     } else {
-      for (var i = 0; i <= 3; i++) {
-        capacity.options[i].disabled = i != 3;
+      for (i = 0; i <= 3; i++) {
+        capacity.options[i].disabled = i !== 3;
       }
       capacity.options[3].selected = true;
     }
   });
 
   var successMessage = document.querySelector('.success');
+  var errorMessage = document.querySelector('.error');
+
   var form = document.querySelector('.ad-form');
   form.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(form), function () {
       successMessage.classList.remove('hidden');
-    }, function (error) {
-      alert(error);
+    }, function () {
+      errorMessage.classList.remove('hidden');
     });
     evt.preventDefault();
   });

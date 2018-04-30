@@ -13,7 +13,7 @@
 
   var applyFilter = function () {
     window.debounce(function () {
-      var filteredItems = window.pins.filter (function (pin) {
+      var filteredItems = window.pins.filter(function (pin) {
         return filterPrice(pin) && filterRooms(pin) && filterGuests(pin) && filterType(pin) && filterFeatures(pin);
       }).slice(0, 5);
       window.pins.forEach(function (it) {
@@ -36,7 +36,7 @@
     }
   };
 
-  housingPrice.addEventListener ('change', applyFilter);
+  housingPrice.addEventListener('change', applyFilter);
 
   var filterType = function (pin) {
     if (housingType.value === 'any') {
@@ -46,7 +46,7 @@
     }
   };
 
-  housingType.addEventListener ('change', applyFilter);
+  housingType.addEventListener('change', applyFilter);
 
   var filterRooms = function (pin) {
     if (housingRooms.value === 'any') {
@@ -56,7 +56,7 @@
     }
   };
 
-  housingRooms.addEventListener ('change', applyFilter);
+  housingRooms.addEventListener('change', applyFilter);
 
   var filterGuests = function (pin) {
     if (housingGuests.value === 'any') {
@@ -66,7 +66,7 @@
     }
   };
 
-  housingGuests.addEventListener ('change', applyFilter);
+  housingGuests.addEventListener('change', applyFilter);
 
   var filterFeatures = function (pin) {
     var trueFeatures = true;
@@ -85,6 +85,6 @@
   };
 
   features.forEach(function (it) {
-    it.addEventListener ('change', applyFilter);
+    it.addEventListener('change', applyFilter);
   });
 }());
