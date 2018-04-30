@@ -66,14 +66,14 @@
 
     return advert;
   };
-  var mapPinMain = document.querySelector('.map__pin--main');
+  var pinMain = document.querySelector('.map__pin--main');
 
   var onPinMainClick = function () {
     window.backend.load(onLoad, onError);
   };
 
-  mapPinMain.addEventListener('mouseup', onPinMainClick);
-  mapPinMain.addEventListener('keydown', function (evt) {
+  pinMain.addEventListener('mouseup', onPinMainClick);
+  pinMain.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, onPinMainClick);
   });
 
@@ -107,6 +107,8 @@
       fragment.appendChild(renderButtonMap(pins[i]));
     }
     buttonElement.appendChild(fragment);
+    window.initialAds = pins;
+
   };
 
   var onError = function (errorMessage) {
