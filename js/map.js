@@ -1,13 +1,10 @@
 'use strict';
 
 (function () {
-  var NUMBER_ACTIVE_PIN = 5;
   var mapOverlay = document.querySelector('.map');
   var pinMain = document.querySelector('.map__pin--main');
-
-  var pinMain = document.querySelector('.map__pin--main');
-
   var inputDisable = document.querySelectorAll('fieldset');
+
   for (var i = 0; i < inputDisable.length; i++) {
     inputDisable[i].disabled = true;
   }
