@@ -1,6 +1,6 @@
 'use strict';
 // Переменные
-// var ESC_BTN = 27;
+var ESC_BTN = 27;
 var ENTER_BTN = 13;
 
 var offerTitle = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
@@ -133,6 +133,7 @@ var fragmentAdvert = fragment.appendChild(articleRender(mapObjects, selectedInde
 articleElement.appendChild(fragmentAdvert);
 
 var removePopup = function () {
+
   var popupClose = document.querySelector('.popup');
   if (popupClose) {
     popupClose.remove();
@@ -146,6 +147,15 @@ for (i = 0; i < inputDisable.length; i++) {
   inputDisable[i].disabled = true;
 }
 
+
+function createPopup () {
+  var noticeNode = articles[index];
+  fragmentAdvert = fragment.appendChild(noticeNode);
+  articleElement.appendChild(fragmentAdvert);
+}
+
+var mapPinMain = document.querySelector('.map__pin--main');
+
 var onPinClick = function () {
   var mapOverlay = document.querySelector('.map');
   mapOverlay.classList.remove('map--faded');
@@ -154,6 +164,7 @@ var onPinClick = function () {
 
   var inputsActive = document.getElementsByTagName('fieldset');
   for (i = 0; i < inputsActive.length; i++) {
+
     inputsActive[i].disabled = false;
   }
 
@@ -162,6 +173,7 @@ var onPinClick = function () {
   var addressCoord = document.getElementById('address');
   addressCoord.value = coords1;
 };
+
 
 mapPinMain.addEventListener('mouseup', onPinClick);
 
@@ -246,3 +258,4 @@ roomNumber.addEventListener('change', function () {
     capacity.options[1].disabled = true;
   }
 });
+
