@@ -79,13 +79,4 @@
     });
     evt.preventDefault();
   });
-  var successMessageRemove = function () {
-    if (successMessage) {
-      successMessage.classList.add('hidden');
-      location.reload();
-    }
-  };
-  document.addEventListener('keydown', function (evt) {
-    window.util.isEscEvent(evt, successMessageRemove);
-  });
 })();
