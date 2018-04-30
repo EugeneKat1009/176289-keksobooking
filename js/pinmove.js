@@ -1,10 +1,12 @@
 'use strict';
 
 (function () {
+  var MAX_X = 1135;
+  var MIN_Y = 150;
+  var MAX_Y = 500;
+
   var form = document.querySelector('.ad-form');
   var addressInput = form.elements.address;
-  var MAX_X = 1135;
-  var MAX_Y = 620;
   var mapPinMain = document.querySelector('.map__pin--main');
 
   mapPinMain.addEventListener('mousedown', function (evt) {
@@ -33,7 +35,7 @@
 
       var positionX = newX;
       var positionY = newY;
-      if (positionX >= 0 && positionX <= MAX_X && positionY >= 0 && positionY <= MAX_Y) {
+      if (positionX >= 0 && positionX <= MAX_X && positionY >= MIN_Y && positionY <= MAX_Y) {
         mapPinMain.style.left = newX + 'px';
         mapPinMain.style.top = newY + 'px';
         var pinMainPosition = positionX + ', ' + positionY;

@@ -44,9 +44,8 @@
   var filterType = function (pin) {
     if (housingType.value === 'any') {
       return true;
-    } else {
-      return pin.offer.type === housingType.value;
     }
+    return pin.offer.type === housingType.value;
   };
 
   housingType.addEventListener('change', applyFilter);
@@ -54,9 +53,8 @@
   var filterRooms = function (pin) {
     if (housingRooms.value === 'any') {
       return true;
-    } else {
-      return pin.offer.rooms === ~~housingRooms.value;
     }
+    return pin.offer.rooms === ~~housingRooms.value;
   };
 
   housingRooms.addEventListener('change', applyFilter);
@@ -64,9 +62,8 @@
   var filterGuests = function (pin) {
     if (housingGuests.value === 'any') {
       return true;
-    } else {
-      return pin.offer.guests === ~~housingGuests.value;
     }
+    return pin.offer.guests === ~~housingGuests.value;
   };
 
   housingGuests.addEventListener('change', applyFilter);
