@@ -45,27 +45,45 @@
   });
 
   // синхронизация количества людей
+  if (roomNumber.options[0].selected === true) {
+    capacity.options[2].selected = true;
+    capacity.options[0].disabled = true;
+    capacity.options[1].disabled = true;
+    capacity.options[3].disabled = true;
+  }
+
   roomNumber.addEventListener('change', function () {
-    if (roomNumber.options[0].selected === true) {
-      capacity.options[2].selected = true;
-      capacity.options[0].disabled = true;
-      capacity.options[1].disabled = true;
-      capacity.options[3].disabled = true;
-    } else if (roomNumber.options[1].selected === true) {
-      capacity.options[2].selected = true;
-      capacity.options[1].selected = true;
-      capacity.options[0].disabled = true;
-      capacity.options[3].disabled = true;
-    } else if (roomNumber.options[2].selected === true) {
-      capacity.options[1].selected = true;
-      capacity.options[0].selected = true;
-      capacity.options[2].disabled = true;
-      capacity.options[3].disabled = true;
-    } else if (roomNumber.options[3].selected === true) {
+    var roomCount = ~~roomNumber.value;
+    if (roomCount !== 100) {
+      for (var i = 1; i <= 3; i++) {
+        capacity.options[3 - i].disabled = i > roomCount;
+      }
+      capacity.options[3 - roomCount].selected = true;
+    } else {
+      for (var i = 0; i <= 3; i++) {
+        capacity.options[i].disabled = i != 3;
+      }
       capacity.options[3].selected = true;
-      capacity.options[0].disabled = true;
-      capacity.options[2].disabled = true;
-      capacity.options[1].disabled = true;
     }
+  });
+
+  var successMessage = document.querySelector('.success');
+  var form = document.querySelector('.ad-form');
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form), function () {
+      successMessage.classList.remove('hidden');
+    }, function (error) {
+      alert(error);
+    });
+    evt.preventDefault();
+  });
+  var successMessageRemove = function () {
+    if (successMessage) {
+      successMessage.classList.add('hidden');
+      location.reload();
+    }
+  };
+  document.addEventListener('keydown', function (evt) {
+    window.util.isEscEvent(evt, successMessageRemove);
   });
 })();
