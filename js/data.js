@@ -9,12 +9,13 @@
   var photoTemplate = document.querySelector('template').content.querySelector('.popup__photo');
 
   // объекты
-  var renderButtonMap = function (pin) {
+  var renderButtonMap = function (pin, isVisible) {
     var button = buttonTemplate.cloneNode(true);
     button.querySelector('img').src = pin.author.avatar;
     button.querySelector('img').alt = pin.offer.title;
     button.style.left = pin.location.x + 'px';
     button.style.top = pin.location.y + 'px';
+    button.style.display = isVisible ? 'block' : 'none';
     button.addEventListener('click', function () {
       var popup = document.querySelector('.popup');
       if (popup) {
@@ -22,6 +23,7 @@
       }
       onPinClick(pin);
     });
+    pin.button = button;
     return button;
   };
 
@@ -66,19 +68,18 @@
 
     return advert;
   };
-  var mapPinMain = document.querySelector('.map__pin--main');
+  var pinMain = document.querySelector('.map__pin--main');
 
   var onPinMainClick = function () {
     window.backend.load(onLoad, onError);
   };
 
-  mapPinMain.addEventListener('mouseup', onPinMainClick);
-  mapPinMain.addEventListener('keydown', function (evt) {
+  pinMain.addEventListener('mouseup', onPinMainClick);
+  pinMain.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, onPinMainClick);
   });
 
   var onPinClick = function (pin) {
-
     var fragment = document.createDocumentFragment();
     var fragmentAdvert = fragment.appendChild(popupRender(pin));
     articleElement.appendChild(fragmentAdvert);
@@ -101,10 +102,11 @@
   };
 
   var onLoad = function (pins) {
+    window.pins = pins;
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < pins.length; i++) {
-      fragment.appendChild(renderButtonMap(pins[i]));
+      fragment.appendChild(renderButtonMap(pins[i], i < 5));
     }
     buttonElement.appendChild(fragment);
   };
