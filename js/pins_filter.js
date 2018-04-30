@@ -19,7 +19,10 @@
       window.pins.forEach(function (it) {
         it.button.style.display = filteredItems.indexOf(it) >= 0 ? 'block' : 'none';
       });
-      document.querySelector('.popup').style.display = 'none';
+      var popup = document.querySelector('.popup');
+      if (popup) {
+        popup.style.display = 'none';
+      };
     });
   };
 

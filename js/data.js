@@ -45,7 +45,7 @@
     }
 
     advert.querySelector('.popup__type').textContent = accommodationType;
-    advert.querySelector('.popup__text--capacity').textContent = pin.offer.rooms + ' комнаты для ' + pin.offer.rooms + ' гостей';
+    advert.querySelector('.popup__text--capacity').textContent = pin.offer.rooms + ' комнаты для ' + pin.offer.guests + ' гостей';
     advert.querySelector('.popup__text--time').textContent = 'Заезд после ' + pin.offer.checkin + ', выезд до ' + pin.offer.checkout;
 
     var featuresItems = advert.querySelector('.popup__features');
