@@ -67,6 +67,7 @@
             <option value="any" selected>Любое число гостей</option>
             <option value="1">Один гость</option>
             <option value="2">Два гостя</option>
+            <option value="3">Три гостя</option>
           </select>
 
           <fieldset id="housing-features" class="map__features">
@@ -122,7 +123,7 @@
 
         <fieldset class="ad-form__element ad-form__element--wide">
           <label class="ad-form__label" for="address">Адрес</label>
-          <input id="address" name="address" type="text">
+          <input id="address" name="address" type="text" readonly>
         </fieldset>
 
         <fieldset class="ad-form__element">
@@ -214,7 +215,7 @@
 
         <fieldset class="ad-form__element ad-form__element--submit" disabled>
           <button class="ad-form__submit" type="submit">Опубликовать</button>
-          или <button class="ad-form__reset" type="reset">очистить</button>
+          или <button class="ad-form__reset" type="reset" onclick="location.reload()">очистить</button>
         </fieldset>
       </form>
     </section>
