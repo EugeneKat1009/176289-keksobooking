@@ -70,9 +70,7 @@
 
   var filterFeatures = function (pin) {
     var trueFeatures = true;
-    if (features.length === 0) {
-      trueFeatures = true;
-    } else {
+    if (features.length > 0) {
       features.forEach(function (it) {
         if (it.checked) {
           if (pin.offer.features.indexOf(it.value) === -1) {
