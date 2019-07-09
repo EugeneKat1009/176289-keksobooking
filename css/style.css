@@ -1166,7 +1166,8 @@ fieldset {
 
 /* Оверлей */
 
-.success {
+.success,
+.error {
   position: fixed;
   top: 0;
   left: 0;
@@ -1187,7 +1188,8 @@ fieldset {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.success__message {
+.success__message,
+.error__message {
   position: relative;
 
   color: #ffffff;
